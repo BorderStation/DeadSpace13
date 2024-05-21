@@ -7,7 +7,9 @@ GLOBAL_LIST_EMPTY(necromorph_markers)
 	layer = HIGH_OBJ_LAYER
 	plane = GAME_PLANE
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	armor = list(BLUNT = 100, PUNCTURE = 100, SLASH = 100, LASER = 100, ENERGY = 100, BOMB = 75, BIO = 100, FIRE = 100, ACID = 100)
+	max_integrity = 2000
 	bound_width = 96
 	bound_x = -32
 	pixel_x = -33

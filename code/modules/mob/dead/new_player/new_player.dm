@@ -79,18 +79,18 @@
 
 	if(href_list["late_join"]) //This still exists for queue messages in chat
 		if(!SSticker?.IsRoundInProgress())
-			to_chat(usr, span_boldwarning("The round is either not ready, or has already finished..."))
+			to_chat(usr, span_boldwarning("Раунд ещё не начался, или уже был закончен..."))
 			return
 		LateChoices()
 		return
 
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
-			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
+			to_chat(usr, span_danger("Раунд ещё не начался, или уже был закончен..."))
 			return
 
 		if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-			to_chat(usr, span_notice("There is an administrative lock on entering the game!"))
+			to_chat(usr, span_notice("Установлена административная блокировка на вход в игру!"))
 			return
 
 		//Determines Relevent Population Cap
@@ -106,7 +106,7 @@
 
 		if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
 			if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
-				to_chat(usr, span_warning("Server is full."))
+				to_chat(usr, span_warning("Сервер заполнен."))
 				return
 
 		AttemptLateSpawn(href_list["SelectedJob"])
@@ -138,11 +138,11 @@
 	output += {"
 	<center>
 		<div>
-			<a href='byond://?src=[REF(src)];show_preferences=1'>Options</a>
+			<a href='byond://?src=[REF(src)];show_preferences=1'>Настройки</a>
 		</div>
 		<hr>
 		<p>
-			<b>Playing As</b>
+			<b>Играть как</b>
 			<br>
 			<a href='byond://?src=[REF(src)];character_setup=1'>[client?.prefs.read_preference(/datum/preference/name/real_name)]</a>
 		</p>
@@ -152,21 +152,21 @@
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
 			if(PLAYER_NOT_READY)
-				output += "<div>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | <b>Not Ready</b> | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</div>"
+				output += "<div>\[ [LINKIFY_READY("Готовы", PLAYER_READY_TO_PLAY)] | <b>Не готовы</b> | [LINKIFY_READY("Наблюдать", PLAYER_READY_TO_OBSERVE)] \]</div>"
 			if(PLAYER_READY_TO_PLAY)
-				output += "<div>\[ <b>Ready</b> | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</div>"
+				output += "<div>\[ <b>Готовы</b> | [LINKIFY_READY("Не готовы", PLAYER_NOT_READY)] | [LINKIFY_READY("Наблюдать", PLAYER_READY_TO_OBSERVE)] \]</div>"
 			if(PLAYER_READY_TO_OBSERVE)
-				output += "<div>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</div>"
+				output += "<div>\[ [LINKIFY_READY("Готовы", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Не готовы", PLAYER_NOT_READY)] | <b> Наблюдать </b> \]</div>"
 	else
 		output += {"
 		<p>
-			<a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a>
+			<a href='byond://?src=[REF(src)];manifest=1'>Посмотреть список экипажа</a>
 		</p>
 		<p>
-			<a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a>
+			<a href='byond://?src=[REF(src)];late_join=1'>Зайти в игру!</a>
 		</p>
 		<p>
-			[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]
+			[LINKIFY_READY("Наблюдать", PLAYER_READY_TO_OBSERVE)]
 		</p>
 		"}
 
@@ -176,7 +176,7 @@
 
 	output += "</center>"
 
-	var/datum/browser/popup = new(src, "playersetup", "<center><div>Welcome to<br>Daedalus Outpost</div></center>", 270, 310)
+	var/datum/browser/popup = new(src, "playersetup", "<center><div>Добро<br>пожаловать!</div></center>", 270, 310)
 	popup.set_window_options("can_close=0;focus=false;can_resize=0")
 	popup.set_content(output.Join())
 	popup.open(FALSE)
@@ -189,14 +189,14 @@
 
 	var/less_input_message
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
-		less_input_message = " - Notice: Observer freelook is currently disabled."
+		less_input_message = " - Примечание: Внешний вид призраков на данный момент отключён."
 
 	var/this_is_like_playing_right
 	if(!skip_check)
 		// Don't convert this to tgui please, it's way too important
-		this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
+		this_is_like_playing_right = alert(usr, "Вы уверены что хотите наблюдать? Иначе вы не сможете играть в этом раунде![less_input_message]", "Наблюдать", "Да", "Нет")
 
-	if(QDELETED(src) || !src.client || (!skip_check && (this_is_like_playing_right != "Yes")))
+	if(QDELETED(src) || !src.client || (!skip_check && (this_is_like_playing_right != "Да")))
 		ready = PLAYER_NOT_READY
 		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
@@ -207,12 +207,12 @@
 
 	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	to_chat(src, span_notice("Now teleporting."))
+	to_chat(src, span_notice("Телепортация."))
 	if (O)
 		observer.forceMove(O.loc)
 	else
-		to_chat(src, span_notice("Teleporting failed. Ahelp an admin please"))
-		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
+		to_chat(src, span_notice("Телепортация неудалась. Свяжитесь с администрацией"))
+		stack_trace("Место появления призраков недоступно на этой карте, либо же вы пытаетесь наблюдать прежде чем карта была загружена")
 	observer.key = key
 	observer.client = client
 	observer.restore_ghost_appearance()
@@ -220,7 +220,7 @@
 		observer.set_real_name(observer.client.prefs.read_preference(/datum/preference/name/real_name))
 		observer.client.init_verbs()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
+	deadchat_broadcast(" начал наблюдать.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
 	QDEL_NULL(mind)
 	qdel(src)
 	return TRUE
@@ -228,20 +228,20 @@
 /proc/get_job_unavailable_error_message(retval, jobtitle)
 	switch(retval)
 		if(JOB_AVAILABLE)
-			return "[jobtitle] is available."
+			return "[jobtitle] доступен."
 		if(JOB_UNAVAILABLE_GENERIC)
-			return "[jobtitle] is unavailable."
+			return "[jobtitle] недоступен."
 		if(JOB_UNAVAILABLE_BANNED)
-			return "You are currently banned from [jobtitle]."
+			return "У вас джоббан на [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
-			return "You do not have enough relevant playtime for [jobtitle]."
+			return "У вас недостаточно наигранного времени для [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
-			return "Your account is not old enough for [jobtitle]."
+			return "Ваш аккаунт недостаточно стар для [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
-			return "[jobtitle] is already filled to capacity."
+			return "[jobtitle] был заполнен до отказа."
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
-			return "[jobtitle] is not compatible with some antagonist role assigned to you."
-	return "Error: Unknown job availability."
+			return "[jobtitle] не совместим с вашей ролью антагониста."
+	return "Ошибка: Неизвестна доступность должности."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	var/datum/job/job = SSjob.GetJob(rank)
@@ -309,7 +309,7 @@
 	if(SSshuttle.arrivals)
 		close_spawn_windows() //In case we get held up
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
-			src << tgui_alert(usr,"The arrivals shuttle is currently malfunctioning! You cannot join.")
+			src << tgui_alert(usr,"Шаттл прибытия неисправен! Вы не можете зайти.")
 			return FALSE
 
 		if(CONFIG_GET(flag/arrivals_shuttle_require_undocked))
@@ -322,16 +322,16 @@
 	var/datum/job/job = SSjob.GetJob(rank)
 
 	if(!SSjob.AssignRole(src, job, TRUE))
-		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
+		tgui_alert(usr, "Произошла непридвиденная ошибка при заходе на выбранную должность. Если вы не можете зайти на любую другую должность, то вы должны связаться с администрацией.")
 		return FALSE
 
 	mind.late_joiner = TRUE
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
-		CRASH("Failed to find a latejoin spawn point.")
+		CRASH("Неудалось создать точку спавна для позднего захода.")
 	var/mob/living/character = create_character(destination)
 	if(!character)
-		CRASH("Failed to create a character for latejoin.")
+		CRASH("Неудалось создать персонажа для позднего захода.")
 	transfer_character()
 
 	SSjob.EquipRank(character, job, character.client)
@@ -403,14 +403,14 @@
 	var/list/dat = list()
 	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
 		dat += "<div class='notice red' style='font-size: 125%'>Only Observers may join at this time.</div><br>"
-	dat += "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
+	dat += "<div class='notice'>Время раунда: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>The station has been evacuated.</div><br>"
+				dat += "<div class='notice red'>Станция была эвакуирована.</div><br>"
 			if(SHUTTLE_CALL)
 				if(!SSshuttle.canRecall())
-					dat += "<div class='notice red'>The station is currently undergoing evacuation procedures.</div><br>"
+					dat += "<div class='notice red'>Станция на данный момент проходит процедуру эвакуации.</div><br>"
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
@@ -433,7 +433,7 @@
 			else
 				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
 		if(!length(dept_data))
-			dept_data += "<span class='nopositions'>No positions open.</span>"
+			dept_data += "<span class='nopositions'>Не открытых позиций.</span>"
 		dat += dept_data.Join()
 		dat += "</fieldset><br>"
 		column_counter++
@@ -441,7 +441,7 @@
 			dat += "</td><td valign='top'>"
 	dat += "</td></tr></table></center>"
 	dat += "</div></div>"
-	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 680, 580)
+	var/datum/browser/popup = new(src, "latechoices", "Выбрать должность", 680, 580)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
@@ -521,12 +521,12 @@
 
 	if(client.prefs.read_preference(/datum/preference/blob/job_priority):len == 0)
 		if(!ineligible_for_roles)
-			to_chat(src, span_danger("You have no jobs enabled, along with return to lobby if job is unavailable. This makes you ineligible for any round start role, please update your job preferences."))
+			to_chat(src, span_danger("У вас отключены должности, вернитесь в лобби если ваша должность недоступна. Это делает вас недоступным к любой роли антагониста, обновите ваши предпочтения в работе."))
 		ineligible_for_roles = TRUE
 		ready = PLAYER_NOT_READY
 		if(has_antags)
-			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [num_antags] antag preferences enabled. The player has been forcefully returned to the lobby.")
-			message_admins("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [num_antags] antag preferences enabled. This is an old antag rolling technique. The player has been asked to update their job preferences and has been forcefully returned to the lobby.")
+			log_admin("[src.ckey] не имеет включённых должностей, возвращение в лобби если должность недоступна и [num_antags] роль антагониста включена. Игрок был автоматически перемещён в лобби.")
+			message_admins("[src.ckey] не имеет включённых должностей, возвращение в лобби если должность недоступна и [num_antags] роль антагониста включена. Это старая система выпадения роли антагониста. Игрок был предупреждён об обновлении предпочтений в работе и был перемещён в лобби.")
 		return FALSE //This is the only case someone should actually be completely blocked from antag rolling as well
 	return TRUE
 
