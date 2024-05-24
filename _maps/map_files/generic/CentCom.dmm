@@ -494,9 +494,6 @@
 /area/centcom/syndicate_mothership/control)
 "bA" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/medkit/regular{
-	pixel_x = -7
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -510,6 +507,9 @@
 	},
 /obj/item/bodybag/environmental/nanotrasen{
 	pixel_x = 7
+	},
+/obj/item/storage/medkit/tactical{
+	pixel_x = -7
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
@@ -882,9 +882,15 @@
 	pixel_y = 3
 	},
 /obj/item/storage/box/flashbangs,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
 /obj/structure/table/reinforced,
 /obj/item/clothing/ears/earmuffs,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
@@ -1568,8 +1574,8 @@
 /turf/open/floor/mineral/titanium,
 /area/centcom/syndicate_mothership/control)
 "eA" = (
-/obj/structure/statue/uranium/nuke,
-/turf/open/misc/asteroid/snow,
+/obj/item/toy/figure/syndie,
+/turf/open/floor/plating,
 /area/centcom/syndicate_mothership/control)
 "eB" = (
 /obj/structure/bookcase/random,
@@ -2230,14 +2236,14 @@
 /area/centcom/syndicate_mothership/control)
 "gw" = (
 /obj/structure/table/reinforced,
-/obj/item/grenade/c4{
-	pixel_x = 6
-	},
-/obj/item/grenade/c4{
-	pixel_x = -4
-	},
 /obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/stripes/line,
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4/x4{
+	pixel_x = -4
+	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
 "gy" = (
@@ -2403,9 +2409,21 @@
 /area/centcom/central_command_areas/holding)
 "gX" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/lockbox/loyalty,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
+	},
+/obj/item/ammo_box/magazine/pulse/df{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/pulse/df{
+	pixel_x = 4
+	},
+/obj/item/ammo_box/magazine/pulse/df,
+/obj/item/ammo_box/magazine/pulse/df{
+	pixel_x = -4
+	},
+/obj/item/ammo_box/magazine/pulse/df{
+	pixel_x = -8
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
@@ -2948,9 +2966,15 @@
 	pixel_y = 3
 	},
 /obj/item/storage/box/flashbangs,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
+/obj/item/grenade/c4/x4{
+	pixel_x = 6
+	},
 /obj/structure/table/reinforced,
 /obj/item/clothing/ears/earmuffs,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/north,
@@ -5923,7 +5947,9 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/ert)
 "qG" = (
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/ert)
 "qI" = (
@@ -6035,6 +6061,21 @@
 /obj/structure/railing,
 /turf/open/lava/plasma,
 /area/centcom/syndicate_mothership/control)
+"re" = (
+/turf/open/floor/plating,
+/area/centcom/central_command_areas/supplypod/loading/ert)
+"rg" = (
+/obj/docking_port/stationary{
+	area_type = /area/centcom/syndicate_mothership/control;
+	dir = 2;
+	dwidth = 3;
+	height = 7;
+	name = "escape pod loader";
+	roundstart_template = /datum/map_template/shuttle/assault_pod/default;
+	width = 7
+	},
+/turf/open/floor/plating,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "ri" = (
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/mineral/titanium/yellow,
@@ -6347,6 +6388,22 @@
 /obj/structure/cable/smart_cable/color/yellow,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/admin)
+"sg" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/airlock/centcom{
+	name = "Orbital Drop Pod Loading";
+	req_access_txt = "106"
+	},
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "sh" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
@@ -6498,15 +6555,7 @@
 /turf/open/floor/iron/sepia,
 /area/centcom/central_command_areas/holding)
 "sG" = (
-/obj/docking_port/stationary{
-	area_type = /area/centcom/syndicate_mothership/control;
-	dir = 2;
-	dwidth = 3;
-	height = 7;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/assault_pod/default;
-	width = 7
-	},
+/obj/item/toy/nuke,
 /turf/open/floor/plating,
 /area/centcom/syndicate_mothership/control)
 "sH" = (
@@ -6515,6 +6564,10 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
+"sI" = (
+/obj/structure/statue/uranium/nuke,
+/turf/open/floor/plating,
+/area/centcom/syndicate_mothership/control)
 "sJ" = (
 /obj/machinery/vending/coffee,
 /obj/machinery/newscaster/directional/south,
@@ -6973,6 +7026,16 @@
 /obj/effect/baseturf_helper/asteroid/snow,
 /turf/closed/indestructible/syndicate,
 /area/centcom/syndicate_mothership/control)
+"ua" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/floor/has_bulb,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "uc" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -8523,7 +8586,6 @@
 "yS" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/emps,
-/obj/item/gun/energy/ionrifle,
 /obj/structure/sign/departments/medbay/alt{
 	pixel_y = -32
 	},
@@ -9604,6 +9666,10 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
+"BK" = (
+/obj/machinery/light/floor/has_bulb,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "BL" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -11551,6 +11617,9 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/centcom/syndicate_mothership/control)
+"Hu" = (
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "Hv" = (
 /turf/closed/indestructible/reinforced/centcom,
 /area/centcom/central_command_areas/courtroom)
@@ -14033,10 +14102,21 @@
 /area/centcom/central_command_areas/admin/storage)
 "Pt" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/tank/internals/emergency_oxygen/engi,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
+	},
+/obj/item/ammo_box/magazine/pulse/hv{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/pulse/hv{
+	pixel_x = 4
+	},
+/obj/item/ammo_box/magazine/pulse/hv,
+/obj/item/ammo_box/magazine/pulse/hv{
+	pixel_x = -4
+	},
+/obj/item/ammo_box/magazine/pulse/hv{
+	pixel_x = -8
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
@@ -16208,17 +16288,17 @@
 /area/centcom/central_command_areas/holding)
 "Vg" = (
 /obj/structure/rack,
-/obj/item/gun/energy/e_gun{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun,
 /obj/structure/sign/nanotrasen{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/item/gun/ballistic/pulse/egov{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/gun/ballistic/pulse/egov,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
 "Vh" = (
@@ -16571,10 +16651,9 @@
 /area/centcom/central_command_areas/evacuation)
 "Wd" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/ballistic/automatic/wt550,
-/obj/item/flashlight/seclite,
 /obj/structure/noticeboard/directional/north,
 /obj/effect/turf_decal/stripes/line,
+/obj/item/gun/energy/pulse_heavy,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/armory)
 "We" = (
@@ -17480,6 +17559,18 @@
 	temperature = 2.7
 	},
 /area/centcom/syndicate_mothership)
+"YH" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/supplypod/loading/ert)
 "YI" = (
 /obj/structure/sign/warning/nosmoking,
 /turf/closed/indestructible/reinforced/centcom,
@@ -33079,9 +33170,9 @@ ao
 Er
 ll
 ll
-ll
-ll
-ll
+sG
+eA
+sG
 ll
 ll
 rd
@@ -33334,11 +33425,11 @@ WZ
 ao
 ao
 Fi
-sG
 ll
 ll
-ll
-ll
+eA
+sI
+eA
 ll
 ll
 rd
@@ -33593,9 +33684,9 @@ ao
 Fi
 ll
 ll
-ll
-ll
-ll
+sG
+eA
+sG
 ll
 ll
 rd
@@ -33605,7 +33696,7 @@ ao
 xE
 kb
 ao
-QH
+ao
 ao
 QX
 kb
@@ -33861,10 +33952,10 @@ gf
 ao
 HQ
 kb
-QH
-eA
-QH
 ao
+ao
+ao
+QH
 pG
 kb
 aa
@@ -34119,7 +34210,7 @@ ao
 Pd
 kb
 kb
-QH
+ao
 ao
 HB
 mm
@@ -52361,13 +52452,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -52617,15 +52708,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+Hu
+Hu
+BK
+Hu
+Hu
+mD
+mD
 aa
 aa
 aa
@@ -52873,17 +52964,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+BK
+re
+re
+re
+re
+re
+BK
+mD
+mD
 aa
 aa
 aa
@@ -53130,17 +53221,17 @@ oe
 ta
 mD
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Hu
+re
+re
+re
+re
+re
+re
+re
+Hu
+mD
 aa
 aa
 aa
@@ -53385,19 +53476,19 @@ pT
 pT
 pT
 qF
-oe
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+Hu
+re
+re
+re
+re
+re
+re
+re
+Hu
+mD
 aa
 aa
 aa
@@ -53642,19 +53733,19 @@ pU
 pU
 pU
 qG
-oe
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+sg
+YH
+sg
+ua
+rg
+re
+re
+re
+re
+re
+re
+BK
+mD
 aa
 aa
 aa
@@ -53899,19 +53990,19 @@ pX
 pX
 pX
 rb
-oe
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+Hu
+re
+re
+re
+re
+re
+re
+re
+Hu
+mD
 aa
 aa
 aa
@@ -54158,17 +54249,17 @@ cn
 zT
 gO
 gO
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Hu
+re
+re
+re
+re
+re
+re
+re
+Hu
+mD
 aa
 aa
 aa
@@ -54415,17 +54506,17 @@ tb
 aV
 ho
 gO
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+BK
+re
+re
+re
+re
+re
+BK
+mD
+mD
 aa
 aa
 aa
@@ -54673,15 +54764,15 @@ eF
 db
 gO
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+Hu
+Hu
+BK
+Hu
+Hu
+mD
+mD
 aa
 aa
 aa
@@ -54931,13 +55022,13 @@ bU
 MY
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa

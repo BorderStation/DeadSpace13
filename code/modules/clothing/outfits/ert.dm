@@ -8,7 +8,7 @@
 /datum/outfit/centcom/ert
 	name = "ERT Common"
 
-	uniform = /obj/item/clothing/under/rank/centcom/officer
+	uniform = /obj/item/clothing/under/rank/security/ds_combatsuit
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/combat
 	mask = /obj/item/clothing/mask/gas/sechailer
@@ -34,15 +34,15 @@
 
 	id = /obj/item/card/id/advanced/centcom/ert
 	suit_store = /obj/item/tank/internals/oxygen
-	back = /obj/item/mod/control/pre_equipped/responsory/commander
-	l_hand = /obj/item/gun/energy/e_gun
+	back = /obj/item/mod/control/pre_equipped/ds/adv_soldier
+	l_hand = /obj/item/assault_pod
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/survival/engineer = 1,
+		/obj/item/ammo_box/a357 = 2,
+		/obj/item/storage/box/survival/security = 1,
 	)
-	belt = /obj/item/storage/belt/security/full
+	belt = /obj/item/storage/belt/holster/ds/captain/full
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	l_pocket = /obj/item/switchblade
+	l_pocket = /obj/item/knife/combat
 
 /datum/outfit/centcom/ert/commander/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -57,10 +57,7 @@
 	name = "ERT Commander - High Alert"
 
 	backpack_contents = list(
-		/obj/item/gun/energy/pulse/pistol = 1,
-		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/survival/engineer = 1,
-		/obj/item/melee/energy/sword/saber = 1,
+		/obj/item/storage/box/survival/security = 1,
 	)
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 
@@ -69,16 +66,15 @@
 
 	id = /obj/item/card/id/advanced/centcom/ert/security
 	suit_store = /obj/item/tank/internals/oxygen
-	back = /obj/item/mod/control/pre_equipped/responsory/security
-	l_hand = /obj/item/gun/energy/e_gun/stun
+	back = /obj/item/mod/control/pre_equipped/ds/adv_soldier
+	l_hand = /obj/item/gun/ballistic/automatic/pistol/divet
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/box/handcuffs = 1,
-		/obj/item/storage/box/survival/engineer = 1,
+		/obj/item/ammo_box/magazine/divet/extended = 2,
+		/obj/item/storage/box/survival/security = 1,
 	)
-	belt = /obj/item/storage/belt/security/full
+	belt = /obj/item/storage/belt/holster/ds/security/full
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/centcom/ert/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -95,10 +91,7 @@
 
 	l_hand = /obj/item/gun/energy/pulse/carbine
 	backpack_contents = list(
-		/obj/item/melee/baton/security/loaded = 1,
-		/obj/item/storage/belt/security/full = 1,
-		/obj/item/storage/box/handcuffs = 1,
-		/obj/item/storage/box/survival/engineer = 1,
+		/obj/item/storage/box/survival/security = 1,
 	)
 
 /datum/outfit/centcom/ert/medic

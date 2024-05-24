@@ -1,69 +1,60 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
-/obj/machinery/porta_turret/syndicate/pod,
-/turf/closed/wall/mineral/plastitanium,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/assault_pod)
 "c" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "d" = (
-/turf/closed/wall/mineral/plastitanium,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "e" = (
-/obj/machinery/door/airlock/centcom{
-	aiControlDisabled = 1;
-	name = "Assault Pod";
-	req_access_txt = "150"
-	},
 /obj/docking_port/mobile/assault_pod{
 	name = "steel rain";
 	port_direction = 4;
 	preferred_direction = 4
 	},
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/titanium{
+	name = "Assault Pod";
+	req_access_txt = "106"
+	},
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "h" = (
-/obj/machinery/computer/shuttle/syndicate/drop_pod,
-/turf/closed/wall/mineral/plastitanium,
-/area/shuttle/assault_pod)
-"p" = (
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/assault_pod)
-"t" = (
-/obj/machinery/door/airlock/centcom{
-	aiControlDisabled = 1;
-	name = "Assault Pod";
-	req_access_txt = "150"
+/obj/machinery/computer/shuttle/syndicate/drop_pod{
+	name = "assault pod control";
+	req_access = list();
+	req_access_txt = "106"
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/assault_pod)
 "D" = (
 /obj/structure/chair/comfy/shuttle,
 /obj/machinery/light/directional/north,
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "H" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "L" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
-/turf/open/floor/mineral/plastitanium/red,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "R" = (
-/obj/machinery/door/airlock/centcom{
+/obj/machinery/door/airlock/titanium{
 	name = "Assault Pod";
-	req_access_txt = "150"
+	req_access_txt = "106"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/assault_pod)
 "V" = (
 /turf/template_noop,
@@ -72,63 +63,63 @@
 (1,1,1) = {"
 V
 b
-d
-t
-d
+b
+R
+b
 b
 V
 "}
 (2,1,1) = {"
 b
-d
-c
-p
+b
 c
 d
+c
+b
 b
 "}
 (3,1,1) = {"
-d
+b
 c
-p
+d
 H
-p
-c
 d
+c
+b
 "}
 (4,1,1) = {"
 R
-p
+d
 L
 h
 D
-p
+d
 e
 "}
 (5,1,1) = {"
-d
+b
 H
-p
+d
 c
-p
-H
 d
+H
+b
 "}
 (6,1,1) = {"
 b
-d
-H
-p
+b
 H
 d
+H
+b
 b
 "}
 (7,1,1) = {"
 V
 b
-d
-t
-d
+b
+R
+b
 b
 V
 "}
