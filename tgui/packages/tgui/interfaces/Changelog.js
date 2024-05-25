@@ -201,7 +201,7 @@ export class Changelog extends Component {
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://discord.daedalus13.net/">
+          <a href="https://discord.gg/vTcvW4qSDs">
             here
           </a>.
         </p>
