@@ -2,7 +2,7 @@
 
 ![Logo](https://github.com/BorderStation/DeadSpace13/blob/master/.github/images/comics/256px-Logos.png)
 
-* **Дискорд:** https://discord.gg/7TKfSjn5
+* **Дискорд:** https://discord.gg/vTcvW4qSDs
 * **Вики:** https://ds.lambda13.online
 * **Официалы:** https://daedalus13.net
 
