@@ -14,10 +14,10 @@
 	limb_id = SPECIES_NECROMORPH_HUNTER
 	icon_static = 'deadspace/icons/necromorphs/hunter.dmi'
 	icon_state = "head"
-	max_damage = 100
+	max_damage = 200
 	px_x = 0
 	px_y = -8
-	wound_resistance = 0
+	wound_resistance = 3
 	biomass = 30
 	base_pixel_x = -5
 	base_pixel_y = -35
@@ -29,10 +29,10 @@
 	icon_state = "l_arm"
 	attack_verb_continuous = list("slashes", "stabs")
 	attack_verb_simple = list("slash", "stab")
-	max_damage = 100
+	max_damage = 200
 	px_x = -6
 	px_y = 0
-	wound_resistance = -5
+	wound_resistance = 2
 	biomass = 20
 	base_pixel_x = -17
 	base_pixel_y = -22
@@ -44,10 +44,10 @@
 	icon_state = "r_arm"
 	attack_verb_continuous = list("slashes", "stabs")
 	attack_verb_simple = list("slash", "stab")
-	max_damage = 100
+	max_damage = 200
 	px_x = 6
 	px_y = 0
-	wound_resistance = -5
+	wound_resistance = 2
 	biomass = 20
 	base_pixel_x = 5
 	base_pixel_y = -22
@@ -59,10 +59,10 @@
 	icon_state = "l_leg"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 100
+	max_damage = 200
 	px_x = -2
 	px_y = 12
-	wound_resistance = -5
+	wound_resistance = 2
 	biomass = 20
 	base_pixel_x = -10
 
@@ -73,8 +73,8 @@
 	icon_state = "r_leg"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 100
+	max_damage = 200
 	px_x = 2
 	px_y = 12
-	wound_resistance = -5
+	wound_resistance = 2
 	biomass = 20

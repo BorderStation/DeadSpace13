@@ -487,16 +487,7 @@
 
 	// at this point we are going to hit the thing
 	// in which case send signal to it
-	var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
-	if(iscarbon(target))
-		var/distance_mult = 7
-		if(istype(fired_from, /obj/item/gun))
-			var/obj/item/gun/G = fired_from
-			distance_mult = G.accuracy_falloff
-
-		def_zone = can_miss_zone ? get_zone_with_miss_chance(aimed_def_zone, target, clamp(distance * distance_mult, 0, 100), TRUE) : aimed_def_zone
-	else
-		def_zone = aimed_def_zone
+	def_zone = aimed_def_zone
 
 	SEND_SIGNAL(target, COMSIG_PROJECTILE_PREHIT, args)
 	if(mode == PROJECTILE_PIERCE_HIT)

@@ -1,7 +1,7 @@
 /// If you have ideas how to implement without constantly creating/deleting component while still being able to change
 /// parameters and allow necromorphs and signals to regenerate necromorphs wihout duplicating code. Please implement it that way.
 /datum/component/regenerate
-	dupe_mode = COMPONENT_DUPE_ALLOWED
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// How many limbs can be regenerated per use
 	var/max_limbs = 1
 	/// How much health is restored

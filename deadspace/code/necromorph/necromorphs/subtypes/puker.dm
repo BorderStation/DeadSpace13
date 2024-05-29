@@ -16,7 +16,7 @@
 	biomass_spent_required = 680
 	melee_damage_lower = 7
 	melee_damage_upper = 10
-	max_health = 125
+	max_health = 150
 	armor = list(BLUNT = 50, PUNCTURE = 50, SLASH = 20, LASER = 0, ENERGY = 0, BOMB = 5, BIO = 75, FIRE = 10, ACID = 100)
 	actions = list(
 		/datum/action/cooldown/necro/shoot/puker_snapshot,
@@ -87,8 +87,8 @@
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "acid_large"
 
-	damage = 10
-	speed = 0.8
+	damage = 25
+	speed = 0.3
 	pixel_speed_multiplier = 0.5
 
 /obj/projectile/bullet/biobomb/puker_longshot/on_hit(atom/target, blocked, pierce_hit)
@@ -130,7 +130,7 @@
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "acid_large"
 
-	damage = 6
+	damage = 10
 	speed = 0.8
 	pixel_speed_multiplier = 0.7
 

@@ -57,7 +57,7 @@
 			if(gun.can_trigger_gun(user, akimbo_usage = TRUE))
 				bonus_spread += dual_wield_spread
 
-	. = do_fire_gun(target, user, TRUE, params, null, bonus_spread)
+	. = do_fire_gun(target, user, TRUE, params, user.zone_selected, bonus_spread)
 
 	try_fire_akimbo(arglist(args))
 
