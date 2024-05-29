@@ -6,32 +6,49 @@
 /mob/living/carbon/human/necromorph/hunter
 	class = /datum/necro_class/hunter
 	necro_species = /datum/species/necromorph/hunter
+	var/reanimation_counter = 3
+	var/tmp/replenish_timer
+	bodyparts = list(
+		/obj/item/bodypart/chest/necromorph/hunter,
+		/obj/item/bodypart/head/necromorph/hunter,
+		/obj/item/bodypart/arm/left/necromorph/hunter,
+		/obj/item/bodypart/arm/right/necromorph/hunter,
+		/obj/item/bodypart/leg/left/necromorph/hunter,
+		/obj/item/bodypart/leg/right/necromorph/hunter,
+	)
 
 /mob/living/carbon/human/necromorph/hunter/play_necro_sound(audio_type, volume, vary, extra_range)
 	playsound(src, pick(GLOB.hunter_sounds[audio_type]), volume, vary, extra_range)
 
 /mob/living/carbon/human/necromorph/hunter/handle_death_check()
-	var/total_burn = 0
-	var/total_brute = 0
-	for(var/obj/item/bodypart/BP as anything in bodyparts) //hardcoded to streamline things a bit
-		total_brute += BP.brute_dam
-		total_burn += BP.burn_dam
+	if(health <= 0)
 
-	var/damage = getOxyLoss() + getToxLoss() - getCloneLoss() - total_burn - total_brute
-	if(damage >= maxHealth)
-		if(total_burn >= (maxHealth * 0.5))
+		if(reanimation_counter <= 0)
 			return TRUE
 
 		if(getLastingDamage() >= maxHealth)
 			return TRUE
 
-		if(!HAS_TRAIT(src, TRAIT_FAKEDEATH))
-			ADD_TRAIT(src, TRAIT_FAKEDEATH, src)
-			AddComponent(/datum/component/regenerate, duration = 8.6 SECONDS, heal_amount = 100, max_limbs = 5, lasting_damage_heal = 35, burn_heal_mult = 0.01)
-			addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_FAKEDEATH, src), 8.6 SECONDS)
+		if(!GetComponent(/datum/component/regenerate))
+			AddComponent(/datum/component/regenerate, duration_time = 8.6 SECONDS, heal_amount = 700, max_limbs = 5, lasting_damage_heal = 35, burn_heal_mult = 0.33)
 			play_necro_sound(SOUND_DEATH, VOLUME_HIGH)
+			reanimation_counter--
+			replenish_timer = addtimer(CALLBACK(src, PROC_REF(replenish_reanimations)), 3 MINUTES, TIMER_UNIQUE)
+
 		return FALSE
 	return FALSE
+
+/mob/living/carbon/human/necromorph/hunter/proc/replenish_reanimations()
+	if(reanimation_counter <= 0)
+		return
+	if(reanimation_counter < 2)
+		replenish_timer = addtimer(CALLBACK(src, PROC_REF(replenish_reanimations)), 1 MINUTES, TIMER_UNIQUE)
+	reanimation_counter++
+
+/mob/living/carbon/human/necromorph/hunter/death()
+	if(replenish_timer)
+		deltimer(replenish_timer)
+	. = ..()
 
 /datum/necro_class/hunter
 	display_name = "Hunter"
@@ -43,7 +60,7 @@
 	tier = 3
 	biomass_cost = 400
 	biomass_spent_required = 1200
-	max_health = 275
+	max_health = 600
 	melee_damage_lower = 18
 	melee_damage_upper = 22
 	armor = list(BLUNT = 80, PUNCTURE = 60, SLASH = 15, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 75, FIRE = 0, ACID = 95)
@@ -84,18 +101,20 @@
 	)
 
 /datum/species/necromorph/hunter/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/necromorph/H, forced, spread_damage, sharpness, attack_direction)
-	if(H.health - damage <= 0)
-		return H.handle_death_check()
+	if(H.GetComponent(/datum/component/regenerate))
+		return
 	. = ..()
 
 /datum/action/cooldown/necro/regenerate/hunter
-	cooldown_time = 30 SECONDS
+	cooldown_time = 35 SECONDS
 	duration = 8.6 SECONDS
 	lasting_damage_heal = 20
-	heal_amount = 30
+	heal_amount = 300
 	burn_heal_mult = 0.33
 
 /datum/action/cooldown/necro/regenerate/hunter/PreActivate(atom/target)
+	if(target.GetComponent(/datum/component/regenerate))
+		return to_chat(target, "Ты уже регенерируешь")
 	var/mob/living/carbon/human/necromorph/necromorph = owner
 	necromorph.play_necro_sound(SOUND_PAIN, VOLUME_MID, 1, 3)
 	return ..()

@@ -117,6 +117,13 @@
 	dna = new /datum/dna(src)
 	dna.species = new necro_species
 
+/mob/living/carbon/human/necromorph/update_damage_hud()
+	clear_fullscreen("crit")
+	clear_fullscreen("critvision")
+	clear_fullscreen("oxy")
+	clear_fullscreen("brute")
+	return
+
 /mob/living/carbon/human/necromorph/update_stat()
 	if(status_flags & GODMODE)
 		return

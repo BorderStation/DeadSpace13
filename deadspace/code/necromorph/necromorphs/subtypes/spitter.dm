@@ -16,7 +16,7 @@
 	biomass_spent_required = 0
 	melee_damage_lower = 10
 	melee_damage_upper = 13
-	max_health = 90
+	max_health = 100
 	armor = list(BLUNT = 40, PUNCTURE = 45, SLASH = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 65, FIRE = 0, ACID = 90)
 	actions = list(
 		/datum/action/cooldown/necro/shoot/spitter_snapshot,
@@ -72,8 +72,8 @@
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "acid_large"
 
-	damage = 7
-	speed = 0.8
+	damage = 15
+	speed = 0.5
 	pixel_speed_multiplier = 0.5
 
 /obj/projectile/bullet/biobomb/spitter_longshot/on_hit(atom/target, blocked, pierce_hit)
@@ -115,8 +115,8 @@
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "acid_large"
 
-	damage = 4
-	speed = 0.8
+	damage = 8
+	speed = 0.7
 	pixel_speed_multiplier = 0.7 //meant to be a close range attack, easier to hit but does less damage
 
 /obj/projectile/bullet/biobomb/spitter_snapshot/on_hit(atom/target, blocked, pierce_hit)

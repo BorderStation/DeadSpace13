@@ -12,8 +12,8 @@
 	/// The number of tiles the user must move before the charge starts.
 	/// Creates negative speed modifier to make users toggle charging when needed
 	var/tiles_before_charge = 3
-	/// The speed modifier per tile moved
-	var/speed_per_tile = 0.15
+	/// The speed modifier per tile moved Минус надо, иначе он будет наоборот замедляться
+	var/speed_per_tile = 0.3
 	/// The maximum speed modifier
 	var/maximum_speed = 2.1
 	/// Time before which we should make a move to continue charge
@@ -53,7 +53,7 @@
 
 /datum/action/cooldown/necro/long_charge/proc/on_client_premove(datum/source, list/move_args)
 	SIGNAL_HANDLER
-	if(next_move_limit < world.time || (!agile_charge && move_args[2] != charge_dir))
+	if((world.time + next_move_limit) < world.time || (!agile_charge && move_args[2] != charge_dir))
 		tiles_moved = 0
 		relalculate_speed()
 
@@ -63,7 +63,7 @@
 		return
 	if(!agile_charge)
 		charge_dir = direction
-	++tiles_moved
+	tiles_moved++
 	relalculate_speed()
 	on_moved_action()
 
@@ -91,7 +91,7 @@
 
 /datum/action/cooldown/necro/long_charge/proc/relalculate_speed()
 	if(active)
-		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/necro_charge, TRUE, CHARGE_SPEED)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/necro_charge, TRUE, multiplicative_slowdown = -CHARGE_SPEED)
 
 //To be overridden by child types
 /datum/action/cooldown/necro/long_charge/proc/on_moved_action()
@@ -105,7 +105,7 @@
 	action.slowdown_charge(CHARGE_STOP)
 
 /mob/living/crush_act(mob/living/crushing, datum/action/cooldown/necro/long_charge/action, speed)
-	apply_damage(speed * 20, BRUTE, BODY_ZONE_CHEST)
+	apply_damage(speed * 15, BRUTE, BODY_ZONE_CHEST)
 	if(QDELING(src))
 		return
 
@@ -230,6 +230,8 @@
 
 	for(var/mob/living/carbon/victim in range(shake_dist, owner))
 		if(victim.stat == DEAD)
+			continue
+		if(HAS_TRAIT(victim, TRAIT_FAKEDEATH))
 			continue
 		if(victim.client)
 			shake_camera(victim, 1, 1)
